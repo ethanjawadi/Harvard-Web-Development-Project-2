@@ -1,0 +1,37 @@
+body {
+    padding: 10px;
+}
+
+.active-listings {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.listing {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: box-shadow 0.3s;
+}
+
+.listing:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.listing h3 {
+    margin-top: 0;
+}
+
+.listing p {
+    margin: 10px 0;
+}
+
+.listing-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+

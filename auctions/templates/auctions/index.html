@@ -1,0 +1,25 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+
+    <div class="active-listings">
+        {% for listing in active_listings %}
+            <div class="listing">
+                <!-- Link to the listing detail page -->
+                <h3><a href="{% url 'listing_detail' listing.id %}">{{ listing.title }}</a></h3>
+                <p>{{ listing.description }}</p>
+                {% if listing.image_url %}
+                    <!-- Link image to the listing detail page as well -->
+                    <a href="{% url 'listing_detail' listing.id %}">
+                        <img src="{{ listing.image_url }}" alt="{{ listing.title }}" class="listing-image">
+                    </a>
+                {% endif %}
+                <p>Starting Bid: ${{ listing.start_bid }}</p>
+                <!-- Add more details you want to display -->
+            </div>
+        {% empty %}
+            <p>No active listings available.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

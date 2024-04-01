@@ -1,0 +1,34 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+    <h2>{{ listing.title }}</h2>
+    <p>{{ listing.description }}</p>
+    {% if listing.image_url %}
+        <img src="{{ listing.image_url }}" alt="{{ listing.title }}">
+    {% endif %}
+    <p>Current Bid: ${{ listing.current_bid }}</p>
+
+    <!-- Watchlist Toggle -->
+    {% if user.is_authenticated %}
+        <form action="{% url 'toggle_watchlist' listing.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">
+                {% if user in listing.watchers.all %}
+                    Remove from Watchlist
+                {% else %}
+                    Add to Watchlist
+                {% endif %}
+            </button>
+        </form>
+    {% endif %}
+
+    <!-- Bidding Form (if applicable) -->
+    <!-- Add your bidding form here -->
+
+    <!-- Comments Section (if applicable) -->
+    <!-- Add your comments section here -->
+
+    <!-- Back to Listings Link -->
+    <a href="{% url 'index' %}">Back to Listings</a>
+{% endblock %}
+
